@@ -43,14 +43,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     protected class PostViewHolder extends RecyclerView.ViewHolder{
         private PostItemBinding postItemBinding;
-        public PostViewHolder(PostItemBinding postItemBinding) {
+        public PostViewHolder(@NonNull PostItemBinding postItemBinding) {
             super(postItemBinding.getRoot());
             this.postItemBinding=postItemBinding;
         }
         public void bind(PostModel postModel){
-            postItemBinding.body.setText(postModel.getBody());
-            postItemBinding.title.setText(postModel.getTitle());
-            postItemBinding.userId.setText(postModel.getUserId()+"");
+            postItemBinding.setPost(postModel);
         }
     }
 }
