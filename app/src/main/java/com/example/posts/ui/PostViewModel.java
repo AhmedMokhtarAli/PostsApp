@@ -11,25 +11,33 @@ import com.example.posts.pojo.PostModel;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PostViewModel extends ViewModel {
     public MutableLiveData<List<PostModel>> posts=new MutableLiveData<>();
-    public static final String TAG="Posts Size";
+    public static final String TAG="PostViewModel";
 
+    CompositeDisposable compositeDisposable=new CompositeDisposable();
     public void getPosts(){
-        PostsClient.getINSTANCE().getPosts().enqueue(new Callback<List<PostModel>>() {
-            @Override
-            public void onResponse(Call<List<PostModel>> call, Response<List<PostModel>> response) {
-                posts.setValue(response.body());
-            }
+        Single<List<PostModel>> observable =PostsClient.getINSTANCE().getPosts()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+        compositeDisposable.add(observable.subscribe(postsList ->posts.setValue(postsList), error -> Log.d(TAG, "Error: "+error)));
+    }
 
-            @Override
-            public void onFailure(Call<List<PostModel>> call, Throwable t) {
-                Log.d(TAG, t.getMessage());
-            }
-        });
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        compositeDisposable.clear();
     }
 }
