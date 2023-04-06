@@ -1,4 +1,4 @@
-package com.example.posts.pojo;
+package com.example.domain.entities;
 
 public class PostModel {
     private int id;

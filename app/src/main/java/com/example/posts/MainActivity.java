@@ -1,4 +1,4 @@
-package com.example.posts.ui.main;
+package com.example.posts;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -6,20 +6,13 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.example.posts.R;
-import com.example.posts.data.PostsClient;
+import com.example.domain.entities.PostModel;
+import com.example.posts.adapters.PostAdapter;
 import com.example.posts.databinding.ActivityMainBinding;
-import com.example.posts.pojo.PostModel;
-import com.example.posts.ui.PostViewModel;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
    PostViewModel postViewModel;

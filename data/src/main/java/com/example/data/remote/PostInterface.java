@@ -1,9 +1,7 @@
-package com.example.posts.data;
+package com.example.data.remote;
 
-import com.example.posts.pojo.PostModel;
-
+import com.example.domain.entities.PostModel;
 import java.util.List;
-
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
 import retrofit2.Call;

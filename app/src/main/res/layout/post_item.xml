@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.example.posts.pojo.PostModel"/>
+        <import type="com.example.domain.entities.PostModel"/>
         <variable
             name="post"
-            type="PostModel" />
+            type="com.example.domain.entities.PostModel" />
     </data>
 
     <androidx.cardview.widget.CardView

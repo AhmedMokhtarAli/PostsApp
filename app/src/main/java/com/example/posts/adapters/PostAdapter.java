@@ -1,15 +1,13 @@
-package com.example.posts.ui.main;
+package com.example.posts.adapters;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.posts.R;
+import com.example.domain.entities.PostModel;
 import com.example.posts.databinding.PostItemBinding;
-import com.example.posts.pojo.PostModel;
 
 import java.util.ArrayList;
 import java.util.List;
